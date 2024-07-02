@@ -185,3 +185,97 @@ console.log(Math.trunc(numero))
 let numeroRandom = Math.random() //Numero aleatorio entre 0 y 1.
 nuevoNumRandom = Math.round(numeroRandom * 100)
 console.log("Este es un numero random entre 0 y 100:", nuevoNumRandom);
+
+//BUCLES:
+let tecnologias = ["HTML","CSS","JAVASCRIPT","REACT","ANGULAR"];
+
+for(let index = 0; index < tecnologias.length; index++) {
+    console.log("Tecnologia con for común:", tecnologias[index]);
+}
+
+for(tecnologia of tecnologias) {
+    console.log("Tecnologia con for of:", tecnologia);
+}
+
+const alumno = {
+    nombre: "Ricardo",
+    edad: 25,
+    tecnologias: ["HTML","CSS"]
+}
+
+for(const key in alumno){
+    console.log("Tecnología con for key in:", alumno[key]);
+}
+
+tecnologias.forEach(tecnologia => {
+    console.log("Tecnologia con forEach:",tecnologia);
+})
+
+
+//Sets
+let arr = [1, 1, 2, 3, 4, 5, 6, 1, 0, 3];
+
+nSet = new Set(arr);
+
+console.log(nSet);
+
+//Maps
+
+let nuevoMapa = new Map([
+    ["HMTML", 1],
+    ["CSS", 2],
+    ["JS", 3],
+    ["JQUERY", "Deprecado"],
+    ["React", "Framework de JS"],
+])
+
+console.log(nuevoMapa.get("React"));
+
+console.log(nuevoMapa.set("VueJs", "Framework de JS pero no tan conocido como React"));
+
+console.log(nuevoMapa.delete("React"));
+
+console.log(nuevoMapa.has("JQUERY"));
+
+let nuevoArr = [...nSet];
+
+console.log(nuevoArr);
+
+nuevoArr2 = [...nuevoMapa.keys()];
+
+console.log(nuevoArr2);
+
+//TypeOf & InstanceOf
+
+let a = typeof "sergie";
+console.log(a);
+
+let b = 4;
+console.log(b);
+
+let c = typeof NaN;
+console.log(c);
+
+let d = typeof true;
+
+console.log(d);
+
+let e = ["Ricardo", "Nicolas", "Gabriel"];
+
+console.log(e);
+
+let f = typeof {curso: "JavaScript"};
+
+console.log(f);
+
+if(typeof b == "number") {
+    console.log("Estoy imprimiendo un numero");
+} else {
+    console.log("Enviame un numero");
+}
+
+if(e instanceof Array) {
+    console.log("He recibido un arreglo");
+} else{
+    console.log("Esto no es un arreglo");
+}

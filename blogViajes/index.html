@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegación con Javascript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <ul>
+        <li id="barcelona" onclick="mostrarInfo(event)"><a>Barcelona</a></li>
+        <li id="roma" onclick="mostrarInfo(event)"><a>Roma</a></li>
+        <li id="paris" onclick="mostrarInfo(event)"><a>París</a></li>
+        <li id="londres" onclick="mostrarInfo(event)"><a>Londres</a></li>
+    </ul>
+
+    <div class="contenedor">
+        <h2 id="titulo"></h2>
+        <h3 id="subtitulo"></h3>
+        <p id="parrafo"></p>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
