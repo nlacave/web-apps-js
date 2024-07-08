@@ -1,5 +1,4 @@
 let numeroRandom = Math.trunc(Math.random() * 100) + 1;
-console.log(numeroRandom);
 let entrada = document.getElementById("numeroEntrada");
 let reload = document.getElementById("comprobar");
 let mensaje = document.getElementById("mensaje");
@@ -37,8 +36,8 @@ const comprobar = () => {
 
 const reiniciarJuego = () => {
     numeroRandom = Math.trunc(Math.random() * 100) + 1;
-    console.log(numeroRandom);
     entrada.value = "";
+    mensaje.style.color = "black";
     mensaje.innerHTML = "A jugar!";
     reload.innerHTML = "Comprobar";
     contadorIntentos = 0;
