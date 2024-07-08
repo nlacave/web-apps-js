@@ -10,17 +10,27 @@
 </head>
 
 <body>
-    <h1>Adivina el número</h1>
-    <p>Introduce un número de 4 digitos</p>
-    <input type="text" id="numeroEntrada1" maxlength="1" required>
-    <input type="text" id="numeroEntrada2" maxlength="1" required>
-    <input type="text" id="numeroEntrada3" maxlength="1" required>
-    <input type="text" id="numeroEntrada4" maxlength="1" required>
-    <button onclick="comprobar()" id="comprobar">Comprobar</button>
-    <p id="mensaje"></p>
-    <h4>Cantidad de intentos:</h4>
-    <p id="intentos"></p>
-
+    <h1>¡Desafio Explosivo!</h1>
+    <audio id="background-audio" src="audios/musica-juego.mp3" loop></audio>
+    <h2>¡Desactiva la bomba nuclear que amenaza a la raza humana!</h2>
+    <div class="explosion-container"></div>
+        <img src="img/explosion.svg" id="explosion">
+    <div>
+        <button id="boton-jugar" data-hover-text="Acepto la misión!">Jugar</button>
+        <img id="boton-audio" src="img/sin-audio.png" alt="audio" onclick="manipularAudio()"></button>
+    </div>
+    
+    <div id="juego">
+        <p>Introduce el código de 4 digitos para desactivar el ataque nuclear que amenaza la raza humana.</p>
+        <input type="text" id="numeroEntrada1" maxlength="1" required>
+        <input type="text" id="numeroEntrada2" maxlength="1" required>
+        <input type="text" id="numeroEntrada3" maxlength="1" required>
+        <input type="text" id="numeroEntrada4" maxlength="1" required>
+        <button onclick="comprobar()" id="comprobar">Comprobar</button>
+        <p id="mensaje"></p>
+        <h4>Cantidad de intentos:</h4>
+        <p id="intentos"></p>
+    </div>
     <script src="script.js"></script>
 </body>
 

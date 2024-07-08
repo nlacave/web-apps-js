@@ -1,3 +1,31 @@
+document.addEventListener("DOMContentLoaded", function(){
+    generarChispas(10);
+})
+
+function generarChispas(cantidad) {
+    const explosionContainer = document.querySelector('.explosion-container');
+
+    // Define las posiciones horizontales fijas para cada chispa
+    const positions = ['10%', '30%', '50%', '70%', '90%'];
+
+    for (let i = 0; i < cantidad; i++) {
+        const spark = document.createElement('div');
+        spark.classList.add('spark');
+        
+        // Establece la posición horizontal fija para cada chispa
+        spark.style.left = positions[i % positions.length]; // Cicla a través de las posiciones
+
+        explosionContainer.appendChild(spark);
+
+        // Elimina la chispa después de que termine la animación
+        spark.addEventListener('animationend', () => {
+            spark.remove();
+        });
+    }
+}
+
+const audioElement = document.getElementById("background-audio");
+audioElement.volume = 0.5;
 let numeroRandom1 = Math.trunc(Math.random() * 10);
 let numeroRandom2 = Math.trunc(Math.random() * 10);
 let numeroRandom3 = Math.trunc(Math.random() * 10);
@@ -74,4 +102,15 @@ const reiniciarJuego = () => {
     contadorIntentos = 0;
     intentos.textContent = contadorIntentos;
     juegoGanado = false;
+}
+
+const manipularAudio = () => {
+    const imageElement = document.getElementById('boton-audio');
+    if (imageElement.src.includes('img/sin-audio.png')) {
+        imageElement.src = 'img/audio.png';
+        audioElement.play();
+    } else {
+        imageElement.src = 'img/sin-audio.png';
+        audioElement.pause();
+    }
 }
