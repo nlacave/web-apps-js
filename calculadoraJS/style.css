@@ -1,17 +1,26 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#container {
+  display: block;
+  margin: 0 auto;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: rgb(97, 99, 191);
-  margin: 0px;
+  display: flex;
+  justify-content: center;
 }
 
 #fondoTitulo {
   background-color: rgb(97, 99, 191);
-  width: 30%;
   padding: 0;
   margin: 10px auto 30px auto;
   border-radius: 2px;
   display: block;
-  text-align: center;
 }
 
 h1 {
@@ -22,6 +31,7 @@ h1 {
   margin-top: 30px;
   font-size: 40px;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  margin: 30px auto;
 }
 
 h2 {
@@ -35,13 +45,13 @@ h2 {
 
 .calculadora {
   width: 314px;
-  margin: 0 auto;
   background: linear-gradient(#868484,rgb(70, 65, 65));
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(223, 155, 8, 0.1);
   border-color: black;
   border: 4px solid black;
+  margin: 0 auto;
 }
 
 #pantalla {
@@ -78,3 +88,5 @@ input[type="button"]:hover {
 input[type="button"]:last-child {
   margin-right: 0;
 }
+
+/*Media Queries */
