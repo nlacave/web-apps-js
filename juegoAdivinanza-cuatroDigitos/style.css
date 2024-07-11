@@ -46,7 +46,7 @@ h2 {
   width: 300px;
   display: block;
   margin-top: -280px;
-  z-index: 10;
+  z-index: 11;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
@@ -59,9 +59,12 @@ h2 {
   height: 30px;
   border: none;
   cursor: pointer;
+  position: relative;
+  text-align: center;
+  z-index: 10;
 }
 
-#boton-jugar:after {
+#boton-jugar:after{
   content: attr(data-hover-text);
   position: absolute;
   top: 0;
@@ -72,12 +75,13 @@ h2 {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: rgb(119, 7, 7);
+  background-color: rgb(158, 11, 11);
   opacity: 0;
   transition: opacity 0.3s;
   border-radius: 20px;
 }
-#boton-jugar:hover::after {
+
+#boton-jugar:hover::after{
   opacity: 1;
   border-radius: 20px;
 }
@@ -123,9 +127,9 @@ h2 {
 
 /* Animación de chispa */
 @keyframes spark {
-    0% { opacity: 0; transform: translateY(0); }
+    0% { opacity: 0; transform: translateY(100px); }
     50% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-50px); }
+    100% { opacity: 0; transform: translateY(-100px); }
 }
 
 /* Estilo para la chispa */
@@ -135,7 +139,92 @@ h2 {
     height: 4px; /* Alto de la chispa */
     background-color: yellow; /* Color de la chispa */
     border-radius: 50%; /* Forma redondeada */
-    animation: spark 1s linear infinite; /* Animación infinita */
-    z-index: 100;
+    animation: spark 1.8s linear infinite; /* Animación infinita */
+    z-index: -1;
+}
+
+:root {
+  /* the only thing needed is a grainy/noisy background image */
+  --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+}
+
+.fire::before,
+.fire::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.fire::before {
+  content: "";
+  background-image: var(--glitter), var(--glitter),
+      linear-gradient(
+          0deg,
+          white 0px,
+          #ff8951 5px,
+          #dcbc169c 30%,
+          transparent 70%
+      ),
+      radial-gradient(ellipse at bottom, transparent 30%, black 60%);
+  background-size: 350px 500px, 400px 650px, 100% 100%, 100% 100%;
+  background-blend-mode: hard-light, color-dodge, multiply;
+  background-position: 0px 0px, 0px 0px, var(--gradientPos);
+  background-repeat: repeat, repeat, repeat, no-repeat;
+  mix-blend-mode: color-dodge;
+  filter: brightness(3.7) blur(7px) contrast(6);
+  animation: fire 1.75s linear infinite;
+  box-shadow: inset 0 -40px 50px -60px #63bbc5;
+}
+
+@keyframes fire {
+  0% {
+      background-position: center 0px, center 0px, 50% 100%, center center;
+  }
+  100% {
+      background-position: center -500px, center -650px, 50% 100%, center center;
+  }
+}
+
+html,
+body {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.fire {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
   
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+.time-bar {
+  width: 100%;
+  height: 30px;
+  background-color: #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Asegura que esté arriba de todo */
+  border: 0;
+}
+
+.bar-progress {
+  height: 100%;
+  background: linear-gradient(to right, rgb(255, 217, 3), rgb(255, 176, 6), rgb(238, 53, 7), rgb(248, 0, 0)); /* Color inicial */
+  transition: width 1s linear; /* Transición suave de ancho */
+  position: relative;
+  z-index: 10;  
+}
+
+.counter {
+    visibility: visible;
+    margin: 30px auto;
+    margin-top: -130px;
+    font-size: 100px !important;
+}

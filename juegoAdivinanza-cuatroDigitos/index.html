@@ -10,15 +10,21 @@
 </head>
 
 <body>
+    <div class="time-bar">
+        <div class="bar-progress" id="bar-progress"></div>
+      </div>
     <h1>¡Desafio Explosivo!</h1>
-    <audio id="background-audio" src="audios/musica-juego.mp3" loop></audio>
+    <div id="counter"></div>
+    <audio id="background-audio" src="audios/intro.mp3" loop></audio>
     <h2>¡Desactiva la bomba nuclear que amenaza a la raza humana!</h2>
     <div class="explosion-container"></div>
         <img src="img/explosion.svg" id="explosion">
     <div>
-        <button id="boton-jugar" data-hover-text="Acepto la misión!">Jugar</button>
-        <img id="boton-audio" src="img/sin-audio.png" alt="audio" onclick="manipularAudio()"></button>
+        <button id="boton-jugar" data-hover-text="Acepto la misión!">Jugar ahora!</button>
+        <img id="boton-audio" src="img/sin-audio.png" alt="audio"></button>
     </div>
+    <main id="app" class="fire">
+    </main>
     
     <div id="juego">
         <p>Introduce el código de 4 digitos para desactivar el ataque nuclear que amenaza la raza humana.</p>
@@ -31,7 +37,7 @@
         <h4>Cantidad de intentos:</h4>
         <p id="intentos"></p>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src="/js/script.js"></script>
 </body>
 
 </html>
