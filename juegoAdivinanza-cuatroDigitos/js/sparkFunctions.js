@@ -15,6 +15,7 @@ export const generarChispas = (cantidad) => {
         // Añade un retraso aleatorio para la animación
         spark.style.animationDelay = `${Math.random() * 2}s`;
 
+        //Agregar la chispa al contenedor
         explosionContainer.appendChild(spark);
 
         // Elimina la chispa después de que termine la animación

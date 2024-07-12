@@ -1,6 +1,8 @@
 @font-face {
   font-family: "Coffee Spark";
   src: url("./fuentes/coffee-spark.ttf");
+  font-family: "Digital-7";
+  src: url("./fuentes/digital-7.ttf");
 }
 
 body {
@@ -20,11 +22,18 @@ body {
     font-size: 100px;
 }
 
+h3 {
+  background: linear-gradient(#333, black);
+  margin: 0 auto;
+  padding: 0;
+  border: 6px solid black;
+  border-radius: 20px;
+}
+
 h2 {
-  font-weight: bold;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 20px;
-  margin: -60px auto 70px;
+  font-family: 'Digital-7';
+  font-size: 24px;
+  margin: -90px auto 70px;
 }
 
 #explosion {
@@ -59,9 +68,11 @@ h2 {
   height: 30px;
   border: none;
   cursor: pointer;
-  position: relative;
+  position: absolute;
   text-align: center;
   z-index: 10;
+  margin-top: 30px;
+  transform:translateX(-50%) translateY(-50%);
 }
 
 #boton-jugar:after{
@@ -86,9 +97,22 @@ h2 {
   border-radius: 20px;
 }
 
+p, h4 {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: 'Digital-7';
+  margin-top: 40px;
+}
 
 #juego {
-  display: none;
+  opacity: 0;
+  margin: 10px auto;
+  transition: opacity 2s ease-in-out;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translateX(-50%) translateY(-50%);
 }
 
   input {
@@ -212,12 +236,16 @@ body {
   left: 0;
   z-index: 1000; /* Asegura que esté arriba de todo */
   border: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: opacity 2s ease-in-out;
 }
+
 
 .bar-progress {
   height: 100%;
-  background: linear-gradient(to right, rgb(255, 217, 3), rgb(255, 176, 6), rgb(238, 53, 7), rgb(248, 0, 0)); /* Color inicial */
-  transition: width 1s linear; /* Transición suave de ancho */
+  background: linear-gradient(to right, rgb(255, 217, 3), rgb(255, 176, 6), rgb(238, 53, 7), rgb(248, 0, 0));
+  transition: width 1s linear;
   position: relative;
   z-index: 10;  
 }
@@ -225,15 +253,86 @@ body {
 #counter-container {
   position: relative;
   width: 100%;
-  height: 4vh; /* Ajusta según tus necesidades */
-  align-items: center;
+  height: 4vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #counter {
+  font-family: 'Digital-7', 'Coffee Spark';
   font-size: 80px;
   position: absolute;
   margin: 20px auto;
   text-align: center;
   z-index: 1;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  border: 4px solid black;
+  border-radius: 10px;
+  background: linear-gradient(to right, #333, rgb(53, 49, 49));
+  width: 250px;
+  color: red;
+  padding: 20px;
+  margin-top: -50px !important;
+}
+
+/* Estilos básicos del botón */
+#comprobar {
+  width: 150px;
+  display: block;
+  padding: 15px 30px; /* Ajusta el padding para el tamaño del botón */
+  background-color: #c91905; /* Color de fondo del botón */
+  color: white; /* Color del texto dentro del botón */
+  font-size: 25px; /* Tamaño del texto */
+  font-family: 'Digital-7';
+  text-transform: uppercase; /* Texto en mayúsculas */
+  border: 2px solid #c91905; /* Borde del botón */
+  border-radius: 10px; /* Borde redondeado */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  position: relative; /* Posición relativa para los elementos internos */
+  overflow: hidden; /* Oculta el desbordamiento */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+}
+
+#comprobar::hover {
+  padding: 10px;
+  content: ''; /* Contenido vacío */
+  position: absolute; /* Posición absoluta */
+  top: 0;
+  left: -20px; /* Ajusta la posición de la 'mecha' */
+  width: 20px; /* Ancho de la 'mecha' */
+  height: 100%; /* Alto de la 'mecha' */
+  border-top-left-radius: 2px; /* Borde redondeado superior izquierdo */
+  border-bottom-left-radius: 2px; /* Borde redondeado inferior izquierdo */
+}
+
+/* Efecto al pasar el ratón sobre el botón */
+#comprobar::before {
+  left: 0; /* Mueve la 'mecha' hacia la derecha al pasar el ratón */
+}
+#comprobar:active {
+  transform: translateY(2px); /* Mueve el botón hacia abajo al presionar */
+    box-shadow: 1px 2.5px 3.5px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s ease; /* Transición suave */
+}
+
+#juego input {
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(rgb(255, 255, 255), rgb(155, 155, 155));
+  border: 0.5px solid black;
+  margin: 1px;
+}
+
+#mensaje{
+  font-size: 30px;
+  font-family: 'Digital-7';
+  color: black;
+}
+
+#intentos {
+  font-size: 80px;
+  margin-top: -20px;
 }
