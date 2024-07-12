@@ -24,8 +24,8 @@ export const fadeOut = () => {
         botonElement.style.visibility = 'hidden';
         subtituloElement.style.visibility = 'hidden';
         explosionDiv.style.visibility = 'hidden';
+        counter.style.visibility = 'visible';
         timeBar.style.visibility = 'visible';
         barProgress.style.visibility = 'visible';
-        counter.style.visibility = 'visible';
       }, 2000);
 }

@@ -222,9 +222,18 @@ body {
   z-index: 10;  
 }
 
-.counter {
-    visibility: visible;
-    margin: 30px auto;
-    margin-top: -130px;
-    font-size: 100px !important;
+#counter-container {
+  position: relative;
+  width: 100%;
+  height: 4vh; /* Ajusta según tus necesidades */
+  align-items: center;
+  display: flex;
+}
+
+#counter {
+  font-size: 80px;
+  position: absolute;
+  margin: 20px auto;
+  text-align: center;
+  z-index: 1;
 }
