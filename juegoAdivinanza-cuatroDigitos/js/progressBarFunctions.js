@@ -1,6 +1,8 @@
 // Obtener la barra de progreso
 const progressBar = document.getElementById('bar-progress');
 
+export let percent = 158;
+
 // Función para pintar la barra de progreso en porcentaje dependiendo de la cantidad de segundos actuales.
 //En este caso son 158 segundos totales de duración. Para calcular el porcentaje de 0% a 100% es necesario dividir
 //el valor del porcentaje actual sobre el porcentaje total y multiplicarlo por 100.
@@ -34,7 +36,7 @@ export const updateProgressBar = (percent) => {
   
   //Función para establecer el intervalo de duración de la barra de progreso y del contador
   export const interval = () => {
-    let percent = 158; //158 segundos de duración
+ //158 segundos de duración
     const intervalId = setInterval(() => {
         updateProgressBar(percent);
         updateCounter(percent);

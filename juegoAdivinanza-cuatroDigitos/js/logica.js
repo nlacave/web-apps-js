@@ -1,5 +1,7 @@
-import { ocultarIntervalos } from "./imagen";
-import { generarChispas } from "./sparkFunctions";
+import { ocultarIntervalos } from "./imagen.js";
+import { generarChispas } from "./sparkFunctions.js";
+import { interval, percent } from "./progressBarFunctions.js";
+import { cambiarMusica } from "./audio.js";
 
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
@@ -8,9 +10,11 @@ let entrada4 = document.getElementById("numeroEntrada4");
 let reload = document.getElementById("comprobar");
 let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
+let contador = document.getElementById("counter");
+let barraProgreso = document.getElementById("bar-progress");
 let entrada = entrada1.value.concat(entrada2.value, entrada3.value, entrada4.value);
 let contadorIntentos;
-let juegoGanado;
+let juegoTerminado;
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
 
 export const cargarValoresIniciales = () => {
@@ -21,8 +25,8 @@ export const cargarValoresIniciales = () => {
         numeroRandom3 = Math.trunc(Math.random() * 10);
         numeroRandom4 = Math.trunc(Math.random() * 10);
         numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
-        contadorIntentos = 0;
-        juegoGanado = false;
+        contadorIntentos = 10;
+        juegoTerminado = false;
         intentos.textContent = contadorIntentos;
         mensaje.textContent = "A jugar!";
     }
@@ -36,20 +40,20 @@ export const comprobar = () => {
         return;
     }
 
-    if (!juegoGanado) {
+    if (!juegoTerminado) {
         entrada = entrada1.value + entrada2.value + entrada3.value + entrada4.value;
         let setEntrada = Array.from(new Set(entrada)).join("");
         let coincidencias = 0;
         let coincidenciasExactas = 0;
-        contadorIntentos++;
+        contadorIntentos--;
         intentos.textContent = contadorIntentos;
         mensaje.style.color = "red";
-        if (entrada == numeroRandom) {
-            mensaje.textContent = "¡Felicitaciones! Has adivinado el número.";
+        if (entrada == numeroRandom && contadorIntentos > 0 && percent > 0) {
+            mensaje.textContent = "¡Felicitaciones! Has desactivado la bomba. La humanidad te agradece.";
             mensaje.style.color = "green";
-            juegoGanado = true;
+            juegoTerminado = true;
             reload.textContent = "Volver a jugar.";
-        } else {
+        } else if(entrada != numeroRandom && contadorIntentos > 0 && percent > 0) {
             for (let i = 0; i < setEntrada.length; i++) {
                 if (numeroRandom.includes(setEntrada[i])) {
                     coincidencias++;
@@ -60,9 +64,11 @@ export const comprobar = () => {
                     coincidenciasExactas++;
                 }
             }
-            mensaje.innerHTML = `<p>¡Qué lástima! No has adivinado. Vuelve a intentarlo.</p>
-                                         <p>Valores que se encontraron: ${coincidencias}</p>
-                                         <p>Coincidencias exactas: ${coincidenciasExactas}</p>`;
+            mensaje.textContent = `¡Error! Valores encontrados: ${coincidencias} / En la posicion correcta: ${coincidenciasExactas}`;
+        } else if(entrada != numeroRandom && (contadorIntentos == 0 || percent < 0)) {
+            mensaje.textContent = `¡Que lastima! No has llegado a tiempo para salvar a la humanidad. La bomba ha explotado.`;
+            reload.textContent = "Volver a jugar.";
+            juegoTerminado = true;
         }
     } else {
         reiniciarJuego();
@@ -75,15 +81,15 @@ export const reiniciarJuego = () => {
     let numeroRandom2 = Math.trunc(Math.random() * 10);
     let numeroRandom3 = Math.trunc(Math.random() * 10);
     let numeroRandom4 = Math.trunc(Math.random() * 10);
-    let numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
+    numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
     entrada1.value = "";
     entrada2.value = "";
     entrada3.value = "";
     entrada4.value = "";
-    mensaje.innerHTML = "¡A jugar!";
+    mensaje.textContent = "¡A jugar";
     reload.innerHTML = "Comprobar";
     contadorIntentos = 0;
     intentos.textContent = contadorIntentos;
-    juegoGanado = false;
+    juegoTerminado = false;
 }
 
