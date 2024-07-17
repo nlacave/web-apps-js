@@ -1,6 +1,6 @@
 import { ocultarIntervalos } from "./imagen.js";
 import { generarChispas } from "./sparkFunctions.js";
-import { interval, percent } from "./progressBarFunctions.js";
+import { interval, percent, updateProgressBar } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
 
 let entrada1 = document.getElementById("numeroEntrada1");
@@ -28,6 +28,7 @@ export const cargarValoresIniciales = () => {
         contadorIntentos = 10;
         juegoTerminado = false;
         intentos.textContent = contadorIntentos;
+        mensaje.style.color = 'black';
         mensaje.textContent = "A jugar!";
     }
 
@@ -47,13 +48,12 @@ export const comprobar = () => {
         let coincidenciasExactas = 0;
         contadorIntentos--;
         intentos.textContent = contadorIntentos;
-        mensaje.style.color = "red";
-        if (entrada == numeroRandom && contadorIntentos > 0 && percent > 0) {
+        if (entrada == numeroRandom && contadorIntentos >= 0 && percent >= 0) {
             mensaje.textContent = "¡Felicitaciones! Has desactivado la bomba. La humanidad te agradece.";
             mensaje.style.color = "green";
             juegoTerminado = true;
-            reload.textContent = "Volver a jugar.";
-        } else if(entrada != numeroRandom && contadorIntentos > 0 && percent > 0) {
+            reload.textContent = "Reintentar";
+        } else if(entrada != numeroRandom && contadorIntentos >= 0 && percent >= 0) {
             for (let i = 0; i < setEntrada.length; i++) {
                 if (numeroRandom.includes(setEntrada[i])) {
                     coincidencias++;
@@ -64,10 +64,11 @@ export const comprobar = () => {
                     coincidenciasExactas++;
                 }
             }
+            mensaje.style.color = 'red';
             mensaje.textContent = `¡Error! Valores encontrados: ${coincidencias} / En la posicion correcta: ${coincidenciasExactas}`;
-        } else if(entrada != numeroRandom && (contadorIntentos == 0 || percent < 0)) {
-            mensaje.textContent = `¡Que lastima! No has llegado a tiempo para salvar a la humanidad. La bomba ha explotado.`;
-            reload.textContent = "Volver a jugar.";
+        } else if(entrada != numeroRandom && (contadorIntentos < 0 || percent < 0)) {
+            mensaje.textContent = "¡Que lastima! No has llegado a tiempo. La bomba ha explotado.";
+            reload.textContent = "Reintentar";
             juegoTerminado = true;
         }
     } else {
@@ -86,10 +87,10 @@ export const reiniciarJuego = () => {
     entrada2.value = "";
     entrada3.value = "";
     entrada4.value = "";
-    mensaje.textContent = "¡A jugar";
+    mensaje.style.color = 'black';
+    mensaje.textContent = "A jugar!";
     reload.innerHTML = "Comprobar";
-    contadorIntentos = 0;
+    contadorIntentos = 10;
     intentos.textContent = contadorIntentos;
     juegoTerminado = false;
 }
-

@@ -41,7 +41,7 @@ export const updateProgressBar = (percent) => {
         updateProgressBar(percent);
         updateCounter(percent);
         percent--;
-        if (percent == 0) {
+        if (percent < 0) {
             clearInterval(intervalId); // Detener el intervalo cuando el porcentaje sea menor que 0
         }
     }, 1000); // Ajusta el intervalo (en milisegundos (1000 milisegundos = 1 segundo)) para controlar la velocidad de la animación
