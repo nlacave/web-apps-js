@@ -9,6 +9,7 @@ const explosionDiv = document.querySelector('.explosion-container');
 const counterContainer = document.getElementById('counter-container');
 const botonAudioElement = document.getElementById('boton-audio');
 const juegoElement = document.getElementById('juego');
+const botonComprobar = document.getElementById('comprobar');
 
 export const ocultarIntervalos = () => {
   barProgress.style.visibility = 'hidden';
@@ -30,9 +31,9 @@ export const cambiarPantalla = () => {
     subtituloElement.style.pointerEvents = 'none';
     explosionElement.style.pointerEvents = 'none';
     setTimeout(() => {
-        //tituloElement.style.visibility = 'hidden';
-        //botonElement.style.visibility = 'hidden';
-        //subtituloElement.style.visibility = 'hidden';
+        tituloElement.style.visibility = 'hidden';
+        botonElement.style.visibility = 'hidden';
+        subtituloElement.style.visibility = 'hidden';
         explosionDiv.style.marginTop = '170px';
         counter.style.visibility = 'visible';
         timeBar.style.visibility = 'visible';
@@ -43,5 +44,6 @@ export const cambiarPantalla = () => {
         juegoElement.style.opacity = '1';
         botonAudioElement.style.marginTop = '44px';
         counterContainer.style.marginTop = '-170px';
+        botonComprobar.style.pointerEvents = 'visible';
       }, 2000);
 }
