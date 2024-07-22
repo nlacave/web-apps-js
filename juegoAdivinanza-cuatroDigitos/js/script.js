@@ -1,13 +1,14 @@
 import { interval } from './progressBarFunctions.js';
-import { cambiarPantalla } from './imagen.js';
+import { pantallaJuego } from './imagen.js';
 import { manipularAudio, cambiarMusica } from './audio.js';
 import { cargarValoresIniciales, comprobar } from './logica.js';
 
 const jugar = () => {
-    cambiarPantalla();
+    pantallaJuego();
     cambiarMusica();
     interval();
 }
+
 
 document.addEventListener("DOMContentLoaded", function(){
     cargarValoresIniciales();

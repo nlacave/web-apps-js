@@ -1,7 +1,6 @@
-import { ocultarIntervalos } from "./imagen.js";
+import { ocultarIntervalos, pantallaGameOver, pantallaJuegoGanado } from "./imagen.js";
 import { generarChispas } from "./sparkFunctions.js";
-import { interval, percent, updateProgressBar } from "./progressBarFunctions.js";
-import { cambiarMusica } from "./audio.js";
+import { percentContador } from "./progressBarFunctions.js";
 
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
@@ -10,11 +9,10 @@ let entrada4 = document.getElementById("numeroEntrada4");
 let reload = document.getElementById("comprobar");
 let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
-let contador = document.getElementById("counter");
-let barraProgreso = document.getElementById("bar-progress");
 let entrada = entrada1.value.concat(entrada2.value, entrada3.value, entrada4.value);
 let contadorIntentos;
 let juegoTerminado;
+export let juegoGanado = false;
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
 
 export const cargarValoresIniciales = () => {
@@ -25,6 +23,7 @@ export const cargarValoresIniciales = () => {
         numeroRandom3 = Math.trunc(Math.random() * 10);
         numeroRandom4 = Math.trunc(Math.random() * 10);
         numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
+        console.log(numeroRandom);
         contadorIntentos = 10;
         juegoTerminado = false;
         intentos.textContent = contadorIntentos;
@@ -48,12 +47,11 @@ export const comprobar = () => {
         let coincidenciasExactas = 0;
         contadorIntentos--;
         intentos.textContent = contadorIntentos;
-        if (entrada == numeroRandom && contadorIntentos >= 0 && percent >= 0) {
-            mensaje.textContent = "¡Felicitaciones! Has desactivado la bomba. La humanidad te agradece.";
-            mensaje.style.color = "green";
+        if (entrada == numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
+            pantallaJuegoGanado();
+            juegoGanado = true;
             juegoTerminado = true;
-            reload.textContent = "Reintentar";
-        } else if(entrada != numeroRandom && contadorIntentos >= 0 && percent >= 0) {
+        } else if(entrada != numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
             for (let i = 0; i < setEntrada.length; i++) {
                 if (numeroRandom.includes(setEntrada[i])) {
                     coincidencias++;
@@ -66,13 +64,10 @@ export const comprobar = () => {
             }
             mensaje.style.color = 'red';
             mensaje.textContent = `¡Error! Valores encontrados: ${coincidencias} / En la posicion correcta: ${coincidenciasExactas}`;
-        } else if(entrada != numeroRandom && (contadorIntentos < 0 || percent < 0)) {
-            mensaje.textContent = "¡Que lastima! No has llegado a tiempo. La bomba ha explotado.";
-            reload.textContent = "Reintentar";
+        } else if(entrada != numeroRandom && contadorIntentos == 0) {
+            pantallaGameOver();
             juegoTerminado = true;
         }
-    } else {
-        reiniciarJuego();
     }
 }
 
@@ -90,7 +85,8 @@ export const reiniciarJuego = () => {
     mensaje.style.color = 'black';
     mensaje.textContent = "A jugar!";
     reload.innerHTML = "Comprobar";
-    contadorIntentos = 10;
+    contadorIntentos = 15;
     intentos.textContent = contadorIntentos;
     juegoTerminado = false;
+    juegoGanado = false;
 }
