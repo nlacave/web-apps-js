@@ -74,13 +74,10 @@ export const pantallaGameOver = () => {
   subtituloElement.style.pointerEvents = 'visible';
   subtituloElement.style.marginTop = '20px';
   subtituloElement.style.fontSize = '60px';
-  botonElement.textContent = 'Reintentar';
-  botonElement.style.opacity = '1';
-  botonElement.style.pointerEvents = 'visible';
-  botonElement.style.visibility = 'visible';
-  botonAudioElement.style.opacity = '1';
-  botonAudioElement.style.visibility = 'visible';
-  botonAudioElement.style.pointerEvents = 'visible';
+  reiniciarJuego.style.opacity = '1';
+  reiniciarJuego.style.pointerEvents = 'visible';
+  reiniciarJuego.style.visibility = 'visible';
+  reiniciarJuego.src = 'img/reiniciarJuego.png';
 }
 
 export const pantallaJuegoGanado = () => {
@@ -102,16 +99,8 @@ export const pantallaJuegoGanado = () => {
   subtituloElement.style.pointerEvents = 'visible';
   subtituloElement.style.marginTop = '20px';
   subtituloElement.style.fontSize = '60px';
-  botonElement.textContent = 'Reintentar';
-  botonElement.style.opacity = '1';
-  botonElement.style.pointerEvents = 'visible';
-  botonElement.style.visibility = 'visible';
-  botonAudioElement.style.opacity = '1';
-  botonAudioElement.style.visibility = 'visible';
-  botonAudioElement.style.pointerEvents = 'visible';
   reiniciarJuego.style.opacity = '1';
   reiniciarJuego.style.pointerEvents = 'visible';
   reiniciarJuego.style.visibility = 'visible';
   reiniciarJuego.src = 'img/reiniciarJuego.png';
-  reiniciarJuego.classList.remove('fade-out');
 }

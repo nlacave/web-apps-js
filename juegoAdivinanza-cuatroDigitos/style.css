@@ -73,6 +73,63 @@ h2 {
   z-index: 10;
   margin-top: 30px;
   transform:translateX(-50%) translateY(-50%);
+  bottom: 180px;
+  left: auto;
+}
+
+.imagenes {
+  position: relative;
+  width: 400px; /* Ajusta según tus necesidades */
+  height: 300px; /* Ajusta según tus necesidades */
+  display: none;
+}
+
+.imagenes img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+#imagen1 {
+  animation-name: flash1;
+  display: none;
+}
+
+#imagen2 {
+  animation-name: flash2;
+  animation-delay: 2s; /* Aparecerá después de 2 segundos */
+  display: none;
+}
+
+@keyframes flash1 {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+      box-shadow: 0 0 20px 10px white;
+  }
+  100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 white;
+  }
+}
+
+@keyframes flash2 {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+      box-shadow: 0 0 20px 10px white;
+  }
+  100% {
+      opacity: 1;
+      box-shadow: 0 0 0 0 white;
+  }
 }
 
 #boton-jugar:after{
@@ -91,6 +148,7 @@ h2 {
   transition: opacity 0.3s;
   border-radius: 20px;
 }
+
 
 #boton-jugar:hover::after{
   opacity: 1;
@@ -331,4 +389,9 @@ body {
 #intentos {
   font-size: 80px;
   margin-top: -20px;
+}
+
+#reiniciarJuego {
+  width: 70px;
+  cursor: pointer;
 }

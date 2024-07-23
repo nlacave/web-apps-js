@@ -1,12 +1,16 @@
 import { interval } from './progressBarFunctions.js';
 import { pantallaJuego } from './imagen.js';
 import { manipularAudio, cambiarMusica } from './audio.js';
-import { cargarValoresIniciales, comprobar } from './logica.js';
+import { cargarValoresIniciales, comprobar, juegoTerminado, reiniciarJuego } from './logica.js';
+let intervaloDeJuego;
 
 const jugar = () => {
     pantallaJuego();
     cambiarMusica();
-    interval();
+    if (intervaloDeJuego) {
+        clearInterval(intervaloDeJuego); // Limpia el intervalo anterior
+    }
+    intervaloDeJuego = interval();
 }
 
 
@@ -22,3 +26,6 @@ sonido.addEventListener('click', manipularAudio);
 
 const comprobacion = document.getElementById('comprobar');
 comprobacion.addEventListener('click', comprobar);
+
+const reiniciar = document.getElementById('reiniciarJuego');
+reiniciar.addEventListener('click', reiniciarJuego);

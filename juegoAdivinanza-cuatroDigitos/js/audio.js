@@ -5,7 +5,7 @@ const imageElement = document.getElementById('boton-audio');
 export const manipularAudio = () => {
     if (imageElement.src.includes('img/sin-audio.png')) {
         imageElement.src = 'img/audio.png';
-        audioElement.volume = 0.8;
+        audioElement.volume = 0.3;
         audioElement.play();
     } else {
         imageElement.src = 'img/sin-audio.png';

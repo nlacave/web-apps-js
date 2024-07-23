@@ -4,8 +4,8 @@ import { juegoGanado } from "./logica.js";
 // Obtener la barra de progreso
 const progressBar = document.getElementById('bar-progress');
 
-export let percent = 30;
-export let percentContador = 31;
+let percent = 30;
+let percentContador = 31;
 
 // Función para pintar la barra de progreso en porcentaje dependiendo de la cantidad de segundos actuales.
 //En este caso son 158 segundos totales de duración. Para calcular el porcentaje de 0% a 100% es necesario dividir
@@ -52,4 +52,5 @@ export const updateProgressBar = (percent) => {
             pantallaGameOver();
         }
     }, 1000); // Ajusta el intervalo (en milisegundos (1000 milisegundos = 1 segundo)) para controlar la velocidad de la animación
+    return intervalId;
   };

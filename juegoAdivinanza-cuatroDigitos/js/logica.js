@@ -1,18 +1,20 @@
-import { ocultarIntervalos, pantallaGameOver, pantallaJuegoGanado } from "./imagen.js";
+import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado } from "./imagen.js";
 import { generarChispas } from "./sparkFunctions.js";
-import { percentContador } from "./progressBarFunctions.js";
+import { interval } from "./progressBarFunctions.js";
+import { cambiarMusica } from "./audio.js";
 
+let percentContador = 31;
+let percent = 30;
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
 let entrada3 = document.getElementById("numeroEntrada3");
 let entrada4 = document.getElementById("numeroEntrada4");
-let reload = document.getElementById("comprobar");
 let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
 let entrada = entrada1.value.concat(entrada2.value, entrada3.value, entrada4.value);
 let contadorIntentos;
-let juegoTerminado;
-export let juegoGanado = false;
+export let juegoTerminado;
+export let juegoGanado;
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
 
 export const cargarValoresIniciales = () => {
@@ -25,6 +27,7 @@ export const cargarValoresIniciales = () => {
         numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
         console.log(numeroRandom);
         contadorIntentos = 10;
+        juegoGanado = false;
         juegoTerminado = false;
         intentos.textContent = contadorIntentos;
         mensaje.style.color = 'black';
@@ -73,20 +76,9 @@ export const comprobar = () => {
 
 //Función para volver a comenzar desde cero el juego
 export const reiniciarJuego = () => {
-    let numeroRandom1 = Math.trunc(Math.random() * 10);
-    let numeroRandom2 = Math.trunc(Math.random() * 10);
-    let numeroRandom3 = Math.trunc(Math.random() * 10);
-    let numeroRandom4 = Math.trunc(Math.random() * 10);
-    numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
-    entrada1.value = "";
-    entrada2.value = "";
-    entrada3.value = "";
-    entrada4.value = "";
-    mensaje.style.color = 'black';
-    mensaje.textContent = "A jugar!";
-    reload.innerHTML = "Comprobar";
-    contadorIntentos = 15;
-    intentos.textContent = contadorIntentos;
     juegoTerminado = false;
-    juegoGanado = false;
+    cargarValoresIniciales();
+    pantallaJuego();
+    cambiarMusica();
+    interval(percentContador, percent);
 }
