@@ -12,6 +12,8 @@ const botonAudioElement = document.getElementById('boton-audio');
 const juegoElement = document.getElementById('juego');
 const botonComprobar = document.getElementById('comprobar');
 const reiniciarJuego = document.getElementById('reiniciarJuego');
+const imagen1 = document.getElementById('imagen1');
+const imagen2 = document.getElementById('imagen2');
 
 export const ocultarIntervalos = () => {
   barProgress.style.visibility = 'hidden';
@@ -30,6 +32,7 @@ export const pantallaJuego = () => {
     tituloElement.classList.add('fade-out');
     subtituloElement.classList.add('fade-out');
     explosionElement.classList.add('fade-out');
+    counter.classList.remove('fade-out');
     botonElement.classList.add('fade-out');
     juegoElement.visibility = 'hidden';
     botonElement.style.pointerEvents = 'none';
@@ -38,6 +41,8 @@ export const pantallaJuego = () => {
     explosionElement.style.pointerEvents = 'none';
     setTimeout(() => {
         tituloElement.style.visibility = 'hidden';
+        tituloElement.style.fontSize = '100px';
+        reiniciarJuego.style.display = 'none';
         botonElement.style.visibility = 'hidden';
         subtituloElement.style.visibility = 'hidden';
         explosionDiv.style.marginTop = '170px';
@@ -50,8 +55,9 @@ export const pantallaJuego = () => {
         juegoElement.style.opacity = '1';
         botonAudioElement.style.marginTop = '44px';
         counterContainer.style.marginTop = '-170px';
-        botonComprobar.style.pointerEvents = 'visible';
+        botonComprobar.style.display = 'block';
         juegoElement.style.pointerEvents = 'visible';
+        botonComprobar.style.pointerEvents = 'visible';
       }, 2000);
 }
 
@@ -61,7 +67,6 @@ export const pantallaGameOver = () => {
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
   tituloElement.style.pointerEvents = 'visible';
-  barProgress.style.opacity = '0';
   counter.classList.add('fade-out');
   counter.style.visibility = 'hidden';
   counter.style.pointerEvents = 'none';
@@ -72,12 +77,23 @@ export const pantallaGameOver = () => {
   subtituloElement.style.opacity = '1';
   subtituloElement.style.visibility = 'visible';
   subtituloElement.style.pointerEvents = 'visible';
+  subtituloElement.style.display = 'block';
   subtituloElement.style.marginTop = '20px';
   subtituloElement.style.fontSize = '60px';
+  reiniciarJuego.style.display = 'inline-block';
   reiniciarJuego.style.opacity = '1';
   reiniciarJuego.style.pointerEvents = 'visible';
   reiniciarJuego.style.visibility = 'visible';
   reiniciarJuego.src = 'img/reiniciarJuego.png';
+  counterContainer.style.display = 'inherit';
+  counter.classList.remove('fade-in');
+  timeBar.classList.remove('fade-in');
+  barProgress.classList.remove('fade-in');
+  juegoElement.classList.remove('fade-in');
+  imagen1.src = "/img/explosionCiudad.avif";
+  imagen2.src = "/img/ciudadDestruida.png";
+  imagen1.style.visibility = 'visible';
+  imagen2.style.visibility = 'visible';
 }
 
 export const pantallaJuegoGanado = () => {
@@ -86,7 +102,7 @@ export const pantallaJuegoGanado = () => {
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
   tituloElement.style.pointerEvents = 'visible';
-  barProgress.style.opacity = '0';
+  subtituloElement.style.display = 'block';
   counter.classList.add('fade-out');
   counter.style.visibility = 'hidden';
   counter.style.pointerEvents = 'none';
@@ -99,8 +115,40 @@ export const pantallaJuegoGanado = () => {
   subtituloElement.style.pointerEvents = 'visible';
   subtituloElement.style.marginTop = '20px';
   subtituloElement.style.fontSize = '60px';
+  reiniciarJuego.style.display = 'inline-block';
   reiniciarJuego.style.opacity = '1';
   reiniciarJuego.style.pointerEvents = 'visible';
   reiniciarJuego.style.visibility = 'visible';
   reiniciarJuego.src = 'img/reiniciarJuego.png';
+  counterContainer.style.display = 'inherit';
+  counter.classList.remove('fade-in');
+  timeBar.classList.remove('fade-in');
+  barProgress.classList.remove('fade-in');
+  juegoElement.classList.remove('fade-in');
+}
+
+export const pantallaReinicio = () => {
+  reiniciarJuego.style.opacity = 0;
+  tituloElement.style.opacity = 0;
+  subtituloElement.style.opacity = 0;
+  reiniciarJuego.style.display = 'none';
+  setTimeout(() => {
+        counter.classList.add('fade-in');
+        timeBar.classList.add('fade-in');
+        barProgress.classList.add('fade-in');
+        juegoElement.classList.add('fade-in');
+        tituloElement.style.fontSize = '100px';
+        explosionDiv.style.marginTop = '170px';
+        counter.style.visibility = 'visible';
+        timeBar.style.visibility = 'visible';
+        barProgress.style.visibility = 'visible';
+        juegoElement.style.visibility = 'visible';
+        counter.style.opacity = '1';
+        timeBar.style.opacity = '1';
+        juegoElement.style.opacity = '1';
+        botonAudioElement.style.marginTop = '44px';
+        counterContainer.style.marginTop = '-170px';
+        botonComprobar.style.display = 'block';
+        juegoElement.style.pointerEvents = 'visible';
+  }, 2000);
 }

@@ -1,10 +1,9 @@
-import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado } from "./imagen.js";
+import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
 import { generarChispas } from "./sparkFunctions.js";
-import { interval } from "./progressBarFunctions.js";
+import { percentContador } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
+const progressBar = document.getElementById('bar-progress');
 
-let percentContador = 31;
-let percent = 30;
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
 let entrada3 = document.getElementById("numeroEntrada3");
@@ -18,7 +17,6 @@ export let juegoGanado;
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
 
 export const cargarValoresIniciales = () => {
-        generarChispas(6);
         ocultarIntervalos();
         numeroRandom1 = Math.trunc(Math.random() * 10);
         numeroRandom2 = Math.trunc(Math.random() * 10);
@@ -46,7 +44,7 @@ export const comprobar = () => {
     if (!juegoTerminado) {
         entrada = entrada1.value + entrada2.value + entrada3.value + entrada4.value;
         let setEntrada = Array.from(new Set(entrada)).join("");
-        let coincidencias = 0;
+        let valores = 0;
         let coincidenciasExactas = 0;
         contadorIntentos--;
         intentos.textContent = contadorIntentos;
@@ -57,7 +55,7 @@ export const comprobar = () => {
         } else if(entrada != numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
             for (let i = 0; i < setEntrada.length; i++) {
                 if (numeroRandom.includes(setEntrada[i])) {
-                    coincidencias++;
+                    valores++;
                 }
             }
             for(let j = 0; j < numeroRandom.length; j++) {
@@ -66,7 +64,7 @@ export const comprobar = () => {
                 }
             }
             mensaje.style.color = 'red';
-            mensaje.textContent = `¡Error! Valores encontrados: ${coincidencias} / En la posicion correcta: ${coincidenciasExactas}`;
+            mensaje.textContent = "Error! Encontraste: " + valores + " digitos / En la posicion correcta: " + coincidenciasExactas;
         } else if(entrada != numeroRandom && contadorIntentos == 0) {
             pantallaGameOver();
             juegoTerminado = true;
@@ -76,9 +74,8 @@ export const comprobar = () => {
 
 //Función para volver a comenzar desde cero el juego
 export const reiniciarJuego = () => {
-    juegoTerminado = false;
+    entrada1.value = ""; entrada2.value = ""; entrada3.value = ""; entrada4.value = "";
     cargarValoresIniciales();
-    pantallaJuego();
+    pantallaReinicio();
     cambiarMusica();
-    interval(percentContador, percent);
 }

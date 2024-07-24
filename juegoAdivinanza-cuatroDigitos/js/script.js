@@ -1,20 +1,17 @@
 import { interval } from './progressBarFunctions.js';
 import { pantallaJuego } from './imagen.js';
 import { manipularAudio, cambiarMusica } from './audio.js';
-import { cargarValoresIniciales, comprobar, juegoTerminado, reiniciarJuego } from './logica.js';
-let intervaloDeJuego;
+import { cargarValoresIniciales, comprobar, reiniciarJuego } from './logica.js';
+import { generarChispas } from './sparkFunctions.js';
 
 const jugar = () => {
     pantallaJuego();
     cambiarMusica();
-    if (intervaloDeJuego) {
-        clearInterval(intervaloDeJuego); // Limpia el intervalo anterior
-    }
-    intervaloDeJuego = interval();
+    interval();
 }
 
-
 document.addEventListener("DOMContentLoaded", function(){
+    generarChispas(6);
     cargarValoresIniciales();
 });
 

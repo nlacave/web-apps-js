@@ -279,6 +279,27 @@ body {
   transition: opacity 2s ease-out;
 }
 
+.fade-in {
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#imagen1, #imagen2 {
+  position: absolute;
+  background: #f8ea6e;
+  border: 4px solid black;
+  padding: 10px;
+  bottom: 30px;
+}
+
 .time-bar {
   width: 100%;
   height: 30px;
@@ -301,6 +322,7 @@ body {
   position: relative;
   z-index: 10;  
 }
+
 
 #counter-container {
   position: relative;
@@ -332,7 +354,6 @@ body {
 /* Estilos básicos del botón */
 #comprobar {
   width: 150px;
-  display: block;
   padding: 15px 30px; /* Ajusta el padding para el tamaño del botón */
   background-color: #c91905; /* Color de fondo del botón */
   color: white; /* Color del texto dentro del botón */
@@ -341,24 +362,16 @@ body {
   text-transform: uppercase; /* Texto en mayúsculas */
   border: 2px solid #c91905; /* Borde del botón */
   border-radius: 10px; /* Borde redondeado */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
   position: relative; /* Posición relativa para los elementos internos */
   overflow: hidden; /* Oculta el desbordamiento */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
   pointer-events: none;
+  display: none;
 }
 
-#comprobar::hover {
-  padding: 10px;
-  content: ''; /* Contenido vacío */
-  position: absolute; /* Posición absoluta */
-  top: 0;
-  left: -20px; /* Ajusta la posición de la 'mecha' */
-  width: 20px; /* Ancho de la 'mecha' */
-  height: 100%; /* Alto de la 'mecha' */
-  border-top-left-radius: 2px; /* Borde redondeado superior izquierdo */
-  border-bottom-left-radius: 2px; /* Borde redondeado inferior izquierdo */
+#comprobar:hover {
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
 }
 
 /* Efecto al pasar el ratón sobre el botón */
@@ -366,7 +379,6 @@ body {
   left: 0; /* Mueve la 'mecha' hacia la derecha al pasar el ratón */
 }
 #comprobar:active {
-  transform: translateY(2px); /* Mueve el botón hacia abajo al presionar */
     box-shadow: 1px 2.5px 3.5px rgba(0, 0, 0, 0.3);
     transition: left 0.3s ease; /* Transición suave */
 }
