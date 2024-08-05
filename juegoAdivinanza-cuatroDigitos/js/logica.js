@@ -1,8 +1,6 @@
-import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
-import { generarChispas } from "./sparkFunctions.js";
-import { percentContador } from "./progressBarFunctions.js";
+import { ocultarIntervalos, pantallaGameOver, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
+import { percentContador, intervalId, interval } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
-const progressBar = document.getElementById('bar-progress');
 
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
@@ -65,9 +63,12 @@ export const comprobar = () => {
             }
             mensaje.style.color = 'red';
             mensaje.textContent = "Error! Encontraste: " + valores + " digitos / En la posicion correcta: " + coincidenciasExactas;
-        } else if(entrada != numeroRandom && contadorIntentos == 0) {
+        } else if(entrada != numeroRandom && contadorIntentos == 0 || percentContador < 0 && !juegoGanado) {
             pantallaGameOver();
+            juegoGanado = false;
             juegoTerminado = true;
+            clearInterval(intervalId);
+            intervalId = interval();
         }
     }
 }

@@ -12,8 +12,7 @@ const botonAudioElement = document.getElementById('boton-audio');
 const juegoElement = document.getElementById('juego');
 const botonComprobar = document.getElementById('comprobar');
 const reiniciarJuego = document.getElementById('reiniciarJuego');
-const imagen1 = document.getElementById('imagen1');
-const imagen2 = document.getElementById('imagen2');
+
 
 export const ocultarIntervalos = () => {
   barProgress.style.visibility = 'hidden';
@@ -63,7 +62,7 @@ export const pantallaJuego = () => {
 
 export const pantallaGameOver = () => {
   tituloElement.textContent = 'Game Over'
-  tituloElement.style.fontSize = '200px';
+  tituloElement.style.fontSize = '120px';
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
   tituloElement.style.pointerEvents = 'visible';
@@ -78,8 +77,8 @@ export const pantallaGameOver = () => {
   subtituloElement.style.visibility = 'visible';
   subtituloElement.style.pointerEvents = 'visible';
   subtituloElement.style.display = 'block';
-  subtituloElement.style.marginTop = '20px';
-  subtituloElement.style.fontSize = '60px';
+  subtituloElement.style.marginTop = '100px';
+  subtituloElement.style.fontSize = '24px';
   reiniciarJuego.style.display = 'inline-block';
   reiniciarJuego.style.opacity = '1';
   reiniciarJuego.style.pointerEvents = 'visible';
@@ -90,15 +89,11 @@ export const pantallaGameOver = () => {
   timeBar.classList.remove('fade-in');
   barProgress.classList.remove('fade-in');
   juegoElement.classList.remove('fade-in');
-  imagen1.src = "/img/explosionCiudad.avif";
-  imagen2.src = "/img/ciudadDestruida.png";
-  imagen1.style.visibility = 'visible';
-  imagen2.style.visibility = 'visible';
 }
 
 export const pantallaJuegoGanado = () => {
   tituloElement.textContent = 'Juego Ganado'
-  tituloElement.style.fontSize = '200px';
+  tituloElement.style.fontSize = '120px';
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
   tituloElement.style.pointerEvents = 'visible';
@@ -113,8 +108,8 @@ export const pantallaJuegoGanado = () => {
   subtituloElement.style.opacity = '1';
   subtituloElement.style.visibility = 'visible';
   subtituloElement.style.pointerEvents = 'visible';
-  subtituloElement.style.marginTop = '20px';
-  subtituloElement.style.fontSize = '60px';
+  subtituloElement.style.marginTop = '100px';
+  subtituloElement.style.fontSize = '24px';
   reiniciarJuego.style.display = 'inline-block';
   reiniciarJuego.style.opacity = '1';
   reiniciarJuego.style.pointerEvents = 'visible';
@@ -132,6 +127,7 @@ export const pantallaReinicio = () => {
   tituloElement.style.opacity = 0;
   subtituloElement.style.opacity = 0;
   reiniciarJuego.style.display = 'none';
+  barProgress.style.width = '0%';
   setTimeout(() => {
         counter.classList.add('fade-in');
         timeBar.classList.add('fade-in');
