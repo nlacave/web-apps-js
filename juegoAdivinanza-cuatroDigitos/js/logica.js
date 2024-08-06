@@ -1,6 +1,7 @@
 import { ocultarIntervalos, pantallaGameOver, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
-import { percentContador, intervalId, interval } from "./progressBarFunctions.js";
+import { interval, percentContador } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
+import { generarChispas } from "./sparkFunctions.js";
 
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");
@@ -8,10 +9,11 @@ let entrada3 = document.getElementById("numeroEntrada3");
 let entrada4 = document.getElementById("numeroEntrada4");
 let mensaje = document.getElementById("mensaje");
 let intentos = document.getElementById("intentos");
-let entrada = entrada1.value.concat(entrada2.value, entrada3.value, entrada4.value);
-let contadorIntentos;
-export let juegoTerminado;
+export let entrada = entrada1.value.concat(entrada2.value, entrada3.value, entrada4.value);
+export let contadorIntentos;
 export let juegoGanado;
+export let juegoTerminado;
+export let juegoPerdido;
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
 
 export const cargarValoresIniciales = () => {
@@ -21,9 +23,9 @@ export const cargarValoresIniciales = () => {
         numeroRandom3 = Math.trunc(Math.random() * 10);
         numeroRandom4 = Math.trunc(Math.random() * 10);
         numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
-        console.log(numeroRandom);
         contadorIntentos = 10;
         juegoGanado = false;
+        juegoPerdido = false;
         juegoTerminado = false;
         intentos.textContent = contadorIntentos;
         mensaje.style.color = 'black';
@@ -49,7 +51,9 @@ export const comprobar = () => {
         if (entrada == numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
             pantallaJuegoGanado();
             juegoGanado = true;
+            juegoPerdido = false;
             juegoTerminado = true;
+            cambiarMusica(juegoGanado, juegoPerdido);
         } else if(entrada != numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
             for (let i = 0; i < setEntrada.length; i++) {
                 if (numeroRandom.includes(setEntrada[i])) {
@@ -63,12 +67,12 @@ export const comprobar = () => {
             }
             mensaje.style.color = 'red';
             mensaje.textContent = "Error! Encontraste: " + valores + " digitos / En la posicion correcta: " + coincidenciasExactas;
-        } else if(entrada != numeroRandom && contadorIntentos == 0 || percentContador < 0 && !juegoGanado) {
+        } else if(entrada != numeroRandom && contadorIntentos == 0) {
             pantallaGameOver();
             juegoGanado = false;
             juegoTerminado = true;
-            clearInterval(intervalId);
-            intervalId = interval();
+            juegoPerdido = true;
+            cambiarMusica(juegoGanado, juegoPerdido);
         }
     }
 }
@@ -76,7 +80,9 @@ export const comprobar = () => {
 //Función para volver a comenzar desde cero el juego
 export const reiniciarJuego = () => {
     entrada1.value = ""; entrada2.value = ""; entrada3.value = ""; entrada4.value = "";
+    generarChispas(6);
     cargarValoresIniciales();
     pantallaReinicio();
     cambiarMusica();
+    interval();
 }

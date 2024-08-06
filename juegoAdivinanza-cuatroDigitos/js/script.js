@@ -1,12 +1,12 @@
 import { interval } from './progressBarFunctions.js';
 import { pantallaJuego } from './imagen.js';
 import { manipularAudio, cambiarMusica } from './audio.js';
-import { cargarValoresIniciales, comprobar, reiniciarJuego } from './logica.js';
+import { cargarValoresIniciales, comprobar, juegoGanado, juegoPerdido, reiniciarJuego } from './logica.js';
 import { generarChispas } from './sparkFunctions.js';
 
 const jugar = () => {
     pantallaJuego();
-    cambiarMusica();
+    cambiarMusica(juegoGanado, juegoPerdido);
     interval();
 }
 

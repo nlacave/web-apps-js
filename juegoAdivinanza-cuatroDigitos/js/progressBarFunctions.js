@@ -1,22 +1,22 @@
-import { pantallaGameOver, pantallaJuegoGanado } from "./imagen.js";
-import { juegoGanado, juegoTerminado } from "./logica.js";
+import { cambiarMusica } from "./audio.js";
+import { pantallaGameOver } from "./imagen.js";
+import { contadorIntentos, juegoGanado, juegoPerdido } from "./logica.js";
 
 // Obtener la barra de progreso
-export let progressBar = document.getElementById('bar-progress');
+const progressBar = document.getElementById('bar-progress');
 
-export let percent = 15;
-export let percentContador = 16;
-export let intervalId;
+export let percent = 158;
+export let percentContador = 159;
 
 // Función para pintar la barra de progreso en porcentaje dependiendo de la cantidad de segundos actuales.
 //En este caso son 158 segundos totales de duración. Para calcular el porcentaje de 0% a 100% es necesario dividir
 //el valor del porcentaje actual sobre el porcentaje total y multiplicarlo por 100.
-export let updateProgressBar = (percent) => {
-    progressBar.style.width = (percent / 16) * 100 + '%';
+export const updateProgressBar = (percent) => {
+    progressBar.style.width = (percent / 158) * 100 + '%';
   }
 
   //Funcion para actualizar el contador
-  export let updateCounter = (percent) => {
+  export const updateCounter = (percent) => {
     let minutos = Math.floor(percentContador / 60);
     let segundos = percent % 60;
     let minutosFormateados;
@@ -40,15 +40,25 @@ export let updateProgressBar = (percent) => {
   }
   
   //Función para establecer el intervalo de duración de la barra de progreso y del contador
-  export let interval = () => {
+  export const interval = () => {
  //158 segundos de duración
-  intervalId = setInterval(() => {
+    const intervalId = setInterval(() => {
         updateCounter(percentContador);
         updateProgressBar(percent);
         percent--;
         percentContador--;
-        if (percentContador < 0 && !juegoGanado) {
+        if (percentContador < 0 && !juegoGanado || contadorIntentos == 0 && !juegoGanado) {
+            cambiarMusica(juegoGanado, true);
+            clearInterval(intervalId);
             pantallaGameOver();
+            progressBar.style.width = '100%';
+            percent = 158;
+            percentContador = 159;
+        } else if (percentContador >= 0 && juegoGanado) {
+            clearInterval(intervalId);
+            progressBar.style.width = '100%';
+            percent = 158;
+            percentContador = 159;
         }
     }, 1000);
     return intervalId;

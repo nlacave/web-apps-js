@@ -61,7 +61,7 @@ export const pantallaJuego = () => {
 }
 
 export const pantallaGameOver = () => {
-  tituloElement.textContent = 'Game Over'
+  tituloElement.textContent = 'Perdiste!'
   tituloElement.style.fontSize = '120px';
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
@@ -92,12 +92,11 @@ export const pantallaGameOver = () => {
 }
 
 export const pantallaJuegoGanado = () => {
-  tituloElement.textContent = 'Juego Ganado'
+  tituloElement.textContent = 'Ganaste!'
   tituloElement.style.fontSize = '120px';
   tituloElement.style.opacity = '1';
   tituloElement.style.visibility = 'visible';
   tituloElement.style.pointerEvents = 'visible';
-  subtituloElement.style.display = 'block';
   counter.classList.add('fade-out');
   counter.style.visibility = 'hidden';
   counter.style.pointerEvents = 'none';
@@ -108,6 +107,7 @@ export const pantallaJuegoGanado = () => {
   subtituloElement.style.opacity = '1';
   subtituloElement.style.visibility = 'visible';
   subtituloElement.style.pointerEvents = 'visible';
+  subtituloElement.style.display = 'block';
   subtituloElement.style.marginTop = '100px';
   subtituloElement.style.fontSize = '24px';
   reiniciarJuego.style.display = 'inline-block';
@@ -127,7 +127,6 @@ export const pantallaReinicio = () => {
   tituloElement.style.opacity = 0;
   subtituloElement.style.opacity = 0;
   reiniciarJuego.style.display = 'none';
-  barProgress.style.width = '0%';
   setTimeout(() => {
         counter.classList.add('fade-in');
         timeBar.classList.add('fade-in');

@@ -73,8 +73,8 @@ h2 {
   z-index: 10;
   margin-top: 30px;
   transform:translateX(-50%) translateY(-50%);
-  bottom: 50px;
   left: auto;
+  bottom: 50px;
 }
 
 .imagenes {
@@ -410,4 +410,46 @@ body {
 #reiniciarJuego {
   width: 70px;
   cursor: pointer;
+}
+
+@media (max-width: 1280px) {
+  h1 {
+    font-size: 60px !important;
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+  #explosion {
+    height: 450px;
+  }
+
+  p {
+    margin-top: -20px;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  #juego {
+    top: 60%;
+  }
+
+  #mensaje {
+    font-size: 20px;
+  }
+
+
+  h4, #intentos {
+    font-size: 20px;
+  }
+  #boton-jugar {
+    width: 220px;
+    height: 60px;
+    margin-top: -13rem;
+    font-size: 20px;
+  }
+  #boton-audio {
+    bottom: unset;
+  }
 }
