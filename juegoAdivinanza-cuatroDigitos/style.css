@@ -1,6 +1,9 @@
 @font-face {
   font-family: "Coffee Spark";
   src: url("./fuentes/coffee-spark.ttf");
+}
+
+@font-face {
   font-family: "Digital-7";
   src: url("./fuentes/digital-7.ttf");
 }
