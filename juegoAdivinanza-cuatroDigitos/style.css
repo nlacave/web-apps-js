@@ -428,6 +428,14 @@ body {
     height: 450px;
   }
 
+  #comprobar {
+    width: 120px;
+    height: unset;
+    font-size: 18px;
+    text-align: center;
+    border: unset;
+  }
+
   p {
     margin-top: -20px;
     font-size: 20px;
@@ -442,17 +450,102 @@ body {
     font-size: 20px;
   }
 
-
-  h4, #intentos {
-    font-size: 20px;
+  #counter {
+    margin-top: 5rem !important;
   }
+
+  #juego input {
+    width: 15px;
+    height: 15px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  #intentos {
+    font-size: 30px;
+  }
+
   #boton-jugar {
     width: 220px;
-    height: 60px;
+    height: unset;
     margin-top: -13rem;
     font-size: 20px;
   }
   #boton-audio {
-    bottom: unset;
+    bottom: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 60px !important;
+    margin-bottom: 60px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+  #explosion {
+    height: 450px;
+  }
+
+  #comprobar {
+    width: 120px;
+    height: unset;
+    font-size: 18px;
+    text-align: center;
+    border: unset;
+  }
+
+  p {
+    position: relative;
+    margin-top: -60px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  #juego {
+    top: 55%;
+  }
+
+  #mensaje {
+    position: absolute;
+    font-size: 20px;
+  }
+
+  #counter {
+    position: relative;
+    top: 3rem !important;
+  }
+
+  #juego input {
+    width: 15px;
+    height: 15px;
+  }
+
+  h4 {
+    font-size: 20px;
+  }
+
+  #intentos {
+    font-size: 24px;
+  }
+
+  .div-intentos {
+    position: relative;
+    top: 160px;
+  }
+  
+  #boton-jugar {
+    width: 220px;
+    height: unset;
+    margin-top: -13rem;
+    font-size: 20px;
+  }
+  #boton-audio {
+    bottom: 2rem;
+    left: center;
   }
 }

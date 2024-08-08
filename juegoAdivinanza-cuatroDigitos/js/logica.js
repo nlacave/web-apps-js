@@ -14,7 +14,10 @@ export let contadorIntentos;
 export let juegoGanado;
 export let juegoTerminado;
 export let juegoPerdido;
+
 let numeroRandom1, numeroRandom2, numeroRandom3, numeroRandom4, numeroRandom;
+let mapaRepetidos;
+let repetidos;
 
 export const cargarValoresIniciales = () => {
         ocultarIntervalos();
@@ -23,6 +26,7 @@ export const cargarValoresIniciales = () => {
         numeroRandom3 = Math.trunc(Math.random() * 10);
         numeroRandom4 = Math.trunc(Math.random() * 10);
         numeroRandom = numeroRandom1.toString() + numeroRandom2.toString() + numeroRandom3.toString() + numeroRandom4.toString();
+        console.log(numeroRandom);
         contadorIntentos = 10;
         juegoGanado = false;
         juegoPerdido = false;
@@ -35,6 +39,8 @@ export const cargarValoresIniciales = () => {
 //Comprobar si el valor ingresado es válido
 export const comprobar = () => {
     let entradas = [entrada1.value, entrada2.value, entrada3.value, entrada4.value];
+    mapaRepetidos = {};
+    repetidos = "No";
 
     if (entradas.some(e => e === "" || isNaN(e))) {
         alert("Los datos ingresados son erróneos. Vuelve a intentarlo.");
@@ -60,13 +66,27 @@ export const comprobar = () => {
                     valores++;
                 }
             }
-            for(let j = 0; j < numeroRandom.length; j++) {
+
+            for (let j = 0; j < numeroRandom.length; j++) {
                 if (entrada[j] == numeroRandom[j]) {
                     coincidenciasExactas++;
                 }
+
+                if (numeroRandom.includes(entrada[j])) {
+                    if (!mapaRepetidos[entrada[j]]) {
+                        mapaRepetidos[entrada[j]] = 0;
+                    }
+                    mapaRepetidos[entrada[j]]++;
+                }
             }
             mensaje.style.color = 'red';
-            mensaje.textContent = "Error! Encontraste: " + valores + " digitos / En la posicion correcta: " + coincidenciasExactas;
+            for (let key in mapaRepetidos) {
+                if (mapaRepetidos[key] > 1) {
+                    repetidos = "Si";
+                    break;
+                }
+            }
+            mensaje.textContent = "Error! Encontraste: " + valores + " digitos / En la posicion correcta: " + coincidenciasExactas + " / Repeticiones encontradas: " + repetidos;
         } else if(entrada != numeroRandom && contadorIntentos == 0) {
             pantallaGameOver();
             juegoGanado = false;
