@@ -299,14 +299,6 @@ body {
   }
 }
 
-#imagen1, #imagen2 {
-  position: absolute;
-  background: #f8ea6e;
-  border: 4px solid black;
-  padding: 10px;
-  bottom: 30px;
-}
-
 .time-bar {
   width: 100vw;
   height: 30px;
@@ -415,7 +407,10 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 1280px) {
+
+
+
+@media (min-width: 1025px) {
   h1 {
     font-size: 60px !important;
     margin-bottom: 60px;
@@ -478,14 +473,14 @@ body {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   h1 {
     font-size: 60px !important;
     margin-bottom: 60px;
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 14px;
   }
   #explosion {
     height: 450px;
@@ -517,7 +512,7 @@ body {
 
   #counter {
     position: relative;
-    top: 3rem !important;
+    top: 1.5rem !important;
   }
 
   #juego input {
@@ -535,7 +530,7 @@ body {
 
   .div-intentos {
     position: relative;
-    top: 160px;
+    top: 140px;
   }
   
   #boton-jugar {
@@ -545,7 +540,8 @@ body {
     font-size: 20px;
   }
   #boton-audio {
-    bottom: 2rem;
     left: center;
+    bottom: unset;
+    margin-top: 20px !important;
   }
 }

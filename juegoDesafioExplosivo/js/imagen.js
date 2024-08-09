@@ -38,6 +38,7 @@ export const pantallaJuego = () => {
     tituloElement.style.pointerEvents = 'none';
     subtituloElement.style.pointerEvents = 'none';
     explosionElement.style.pointerEvents = 'none';
+    botonAudioElement.classList.add('fade-out');
     setTimeout(() => {
         tituloElement.style.visibility = 'hidden';
         tituloElement.style.fontSize = '100px';
@@ -47,12 +48,16 @@ export const pantallaJuego = () => {
         explosionDiv.style.marginTop = '170px';
         counter.style.visibility = 'visible';
         timeBar.style.visibility = 'visible';
+        botonAudioElement.style.visibility = 'visible';
         barProgress.style.visibility = 'visible';
         juegoElement.style.visibility = 'visible';
+        botonAudioElement.style.opacity = '1';
         counter.style.opacity = '1';
         timeBar.style.opacity = '1';
         juegoElement.style.opacity = '1';
-        botonAudioElement.style.marginTop = '44px';
+        botonAudioElement.style.position = 'absolute';
+        botonAudioElement.style.top = '2.2rem';
+        botonAudioElement.style.right = '0.5rem';
         counterContainer.style.marginTop = '-170px';
         botonComprobar.style.display = 'block';
         juegoElement.style.pointerEvents = 'visible';

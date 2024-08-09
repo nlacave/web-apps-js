@@ -1,4 +1,4 @@
-import { ocultarIntervalos, pantallaGameOver, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
+import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado, pantallaReinicio } from "./imagen.js";
 import { interval, percentContador } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
 import { generarChispas } from "./sparkFunctions.js";
@@ -102,7 +102,7 @@ export const reiniciarJuego = () => {
     entrada1.value = ""; entrada2.value = ""; entrada3.value = ""; entrada4.value = "";
     generarChispas(6);
     cargarValoresIniciales();
-    pantallaReinicio();
+    pantallaJuego();
     cambiarMusica();
     interval();
 }
