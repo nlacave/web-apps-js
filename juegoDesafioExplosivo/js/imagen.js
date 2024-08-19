@@ -1,18 +1,16 @@
-
-const explosionElement = document.getElementById('explosion');
-const botonElement = document.getElementById('boton-jugar');
-const tituloElement = document.querySelector("h1");
-const subtituloElement = document.querySelector('h2');
-const counter = document.getElementById('counter');
-const timeBar = document.querySelector('.time-bar');
-const barProgress = document.getElementById('bar-progress');
-const explosionDiv = document.querySelector('.explosion-container');
-const counterContainer = document.getElementById('counter-container');
-const botonAudioElement = document.getElementById('boton-audio');
-const juegoElement = document.getElementById('juego');
-const botonComprobar = document.getElementById('comprobar');
-const reiniciarJuego = document.getElementById('reiniciarJuego');
-
+export const explosionElement = document.getElementById('explosion');
+export const botonElement = document.getElementById('boton-jugar');
+export const tituloElement = document.querySelector("h1");
+export const subtituloElement = document.querySelector('h2');
+export const counter = document.getElementById('counter');
+export const timeBar = document.querySelector('.time-bar');
+export const barProgress = document.getElementById('bar-progress');
+export const explosionDiv = document.querySelector('.explosion-container');
+export const counterContainer = document.getElementById('counter-container');
+export const botonAudioElement = document.getElementById('boton-audio');
+export const juegoElement = document.getElementById('juego');
+export const botonComprobar = document.getElementById('comprobar');
+export const reiniciarJuego = document.getElementById('reiniciarJuego');
 
 export const ocultarIntervalos = () => {
   barProgress.style.visibility = 'hidden';
@@ -55,9 +53,6 @@ export const pantallaJuego = () => {
         counter.style.opacity = '1';
         timeBar.style.opacity = '1';
         juegoElement.style.opacity = '1';
-        botonAudioElement.style.position = 'absolute';
-        botonAudioElement.style.top = '2.2rem';
-        botonAudioElement.style.right = '0.5rem';
         counterContainer.style.marginTop = '-170px';
         botonComprobar.style.display = 'block';
         juegoElement.style.pointerEvents = 'visible';
@@ -125,8 +120,8 @@ export const pantallaJuegoGanado = () => {
   timeBar.classList.remove('fade-in');
   barProgress.classList.remove('fade-in');
   juegoElement.classList.remove('fade-in');
-}
-
+  aplicarEstilos480px();
+  }
 export const pantallaReinicio = () => {
   reiniciarJuego.style.opacity = 0;
   tituloElement.style.opacity = 0;
