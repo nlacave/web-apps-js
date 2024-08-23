@@ -120,7 +120,6 @@ export const pantallaJuegoGanado = () => {
   timeBar.classList.remove('fade-in');
   barProgress.classList.remove('fade-in');
   juegoElement.classList.remove('fade-in');
-  aplicarEstilos480px();
   }
 export const pantallaReinicio = () => {
   reiniciarJuego.style.opacity = 0;
