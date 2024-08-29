@@ -1,5 +1,27 @@
 body {
     margin: 0;
+    background: linear-gradient(to right, rgb(80, 80, 210), #555);
+    color: white;
+    height: 100%;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    width: max-content;
+    border-radius: 0 0 10px 10px;
+    margin: -2px auto;
+}
+
+h3 {
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
 }
 
 ul {
@@ -16,13 +38,18 @@ ul {
 li a {
     display: block;
     color: #000;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 8px 16px;
     text-decoration: none;
     cursor: pointer;
 }
 
 li a.active {
-    background-color: #04AA6D;
+    background-color: rgb(80, 80, 210);
     color: white;
 }
 
@@ -36,4 +63,40 @@ li a:hover:not(.active) {
     margin-left: 25%;
     padding: 1px 16px;
     height: 1000px;
+}
+
+#parrafo {
+    text-align: left;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.5;
+    margin: 20px;
+}
+
+#precio {
+    background: linear-gradient(to right, #f70808d5, #873030);
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 15px;
+    width: 200px;
+    padding: 5px;
+    height: auto;
+    text-align: center;
+    margin-left: -20px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+footer {
+    width: auto;
+    padding: 50px;
+    text-align: center;
+    font-size: 24px;
+    background-color: black;
+    color: white;
+    margin: 0;
+    margin-top: 100px;
+    position: relative;
+    bottom: 0;
 }

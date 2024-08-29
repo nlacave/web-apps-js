@@ -32,9 +32,3 @@ export {
     paris,
     londres
 };
-
-// const { barcelona, roma, paris, londres } = require('./ciudades');
-
-//ES6
-// export { objeto1, objeto2 };
-//import { objeto1, objeto2 } from './ciudades';
