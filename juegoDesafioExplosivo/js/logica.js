@@ -93,7 +93,6 @@ export const comprobar = () => {
 //Función para volver a comenzar desde cero el juego
 export const reiniciarJuego = () => {
     entrada1.value = ""; entrada2.value = ""; entrada3.value = ""; entrada4.value = "";
-    generarChispas(6);
     cargarValoresIniciales();
     pantallaJuego();
     cambiarMusica();
