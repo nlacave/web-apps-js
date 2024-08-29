@@ -51,13 +51,13 @@ export const comprobar = () => {
         contadorIntentos--;
         intentos.textContent = contadorIntentos;
 
-        if (entrada === numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
+        if (entrada === numeroRandom && contadorIntentos >= 0 && percentContador >= 0) {
             pantallaJuegoGanado();
             juegoGanado = true;
             juegoPerdido = false;
             juegoTerminado = true;
             cambiarMusica(juegoGanado, juegoPerdido);
-        } else if (entrada !== numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
+        } else if (entrada !== numeroRandom && contadorIntentos >= 0 && percentContador >= 0) {
             let mapaEntrada = {};
             let mapaNumeroRandom = {};
 
