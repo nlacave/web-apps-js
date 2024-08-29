@@ -57,7 +57,7 @@ export const comprobar = () => {
             juegoPerdido = false;
             juegoTerminado = true;
             cambiarMusica(juegoGanado, juegoPerdido);
-        } else if (entrada !== numeroRandom && contadorIntentos >= 0 && percentContador >= 0) {
+        } else if (entrada !== numeroRandom && contadorIntentos > 0 && percentContador >= 0) {
             let mapaEntrada = {};
             let mapaNumeroRandom = {};
 
@@ -80,7 +80,7 @@ export const comprobar = () => {
             }
             mensaje.style.color = 'red';
             mensaje.textContent = `Error! Encontraste: ${valores} digitos / En la posicion correcta: ${coincidenciasExactas}`;
-        } else if (entrada !== numeroRandom && contadorIntentos < 0) {
+        } else if (entrada !== numeroRandom && contadorIntentos === 0) {
             pantallaGameOver();
             juegoGanado = false;
             juegoTerminado = true;
