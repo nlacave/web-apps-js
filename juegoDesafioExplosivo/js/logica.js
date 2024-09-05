@@ -1,7 +1,6 @@
 import { ocultarIntervalos, pantallaGameOver, pantallaJuego, pantallaJuegoGanado } from "./imagen.js";
 import { interval, percentContador } from "./progressBarFunctions.js";
 import { cambiarMusica } from "./audio.js";
-import { generarChispas } from "./sparkFunctions.js";
 
 let entrada1 = document.getElementById("numeroEntrada1");
 let entrada2 = document.getElementById("numeroEntrada2");

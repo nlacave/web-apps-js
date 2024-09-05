@@ -1,5 +1,5 @@
 //Variables
-
+/*
 var nombre = 'Pedro'; //Variable sin scope || no recomendable
 
 nombre = 'Sergie Code';
@@ -279,3 +279,236 @@ if(e instanceof Array) {
 } else{
     console.log("Esto no es un arreglo");
 }
+
+let texto = 'Este curso es de Javascript y está enseñado por Sergie Code en el año 2023 y mes Octubre';
+
+let busqueda = texto.search(/Javascript/);
+
+console.log(busqueda);
+
+let busqueda2 = texto.search(/JAVASCRIPT/i);
+
+console.log(busqueda2);
+
+let patron = /Sergie Code/;
+
+let busqueda3 = patron.test(texto);
+
+console.log(busqueda3);
+
+let patron2 = /sergie/;
+
+let busqueda4 = patron2.test(texto);
+
+console.log(busqueda4);
+
+let patron3 = /sergie/i;
+
+let busqueda5 = patron3.test(texto);
+
+console.log(busqueda5);
+
+let busqueda6 = patron2.exec(texto);
+
+console.log(busqueda6);
+
+let busqueda7 = patron3.exec(texto);
+
+console.log(busqueda7);
+
+let patron4 = /[2001-2024]/;
+
+let busqueda8 = patron4.exec(texto);
+
+console.log(busqueda8);
+
+let patron5 = /\d/;
+
+let busqueda9 = patron5.test(texto);
+
+console.log(busqueda9);
+
+try {
+    console.log('Llamando al Backend');
+    //throw('Este cliente no está apto para la compra');
+    setTimeout(() => {
+        console.log('Practicando');
+    }, 1000);
+} catch(error) {
+    console.log('Algo falló', error);
+} finally {
+    console.log('Se ejecuta siempre');
+}  
+
+function calculo(numero1, numero2, operacion) {
+    return operacion(numero1, numero2);
+}
+
+function suma(numero1, numero2) {
+    return numero1 + numero2;
+}
+
+console.log(calculo(1, 2, suma));
+
+
+let promesa = new Promise((resolve) => {
+    setTimeout(()=>{
+        let tarea = {'Descripcion':'Tarea 1 completada'}
+        resolve(tarea);
+    }, 3000);
+})
+
+let promesa2 = new Promise((resolve) => {
+    setTimeout(()=>{
+        let tarea = {'Descripcion': 'Tarea 2 completada'}
+        resolve(tarea);
+    }, 5000)
+})
+
+let promesa3 = new Promise((resolve) => {
+    setTimeout(()=>{
+        let tarea = {'Descripcion': 'Tarea 3 completada'}   
+        resolve(tarea)
+        }, 2500)
+    })
+
+    promesa.then(res => {
+        console.log(res.Descripcion);
+        promesa2.then(res => {
+            console.log(res.Descripcion);
+            promesa3.then(res => {
+                console.log(res.Descripcion);
+            })
+        })
+    })
+
+
+    
+// Funciones que devuelven promesas
+const tarea1 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const tarea1Exito = true; // Cambia esto a false para simular una falla
+            if (tarea1Exito) {
+                resolve({ Descripcion: 'Tarea 1 completada' });
+            } else {
+                reject('Fallo en la tarea 1');
+            }
+        }, 3000); // Simula un retraso para la tarea 1
+    });
+};
+
+const tarea2 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const tarea2Exito = true; // Cambia esto a false para simular una falla
+            if (tarea2Exito) {
+                resolve({ Descripcion: 'Tarea 2 completada' });
+            } else {
+                reject('Fallo en la tarea 2');
+            }
+        }, 5000); // Simula un retraso para la tarea 2
+    });
+};
+
+const tarea3 = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const tarea3Exito = true; // Cambia esto a false para simular una falla
+            if (tarea3Exito) {
+                resolve({ Descripcion: 'Tarea 3 completada' });
+            } else {
+                reject('Fallo en la tarea 3');
+            }
+        }, 2500); // Simula un retraso para la tarea 3
+    });
+};
+
+// Función asíncrona para ejecutar las tareas secuencialmente
+
+    tarea1().then(Response => {
+        console.log(Response);
+        return tarea2()
+            .then(Response => {
+            console.log(Response);
+            return tarea3()
+            .then(Response => {
+                console.log(Response);
+            })
+        })
+    })
+    .catch(error => {
+        console.error(error);
+    }) 
+
+    let promesa1 = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        let tarea = {
+            status: 201,
+            descripcion: "Objeto creado.",
+            valor: 1,
+        };
+        let tarea2 = {
+            status: 201,
+            descripcion: 'Objeto creado.',
+            valor: 1,
+        }
+        if(tarea.status == 201 && tarea2.status == 201) {
+            resolve([tarea, tarea2]);
+        } else{
+            reject(['Fallo al crear el objeto:', tarea, tarea2]);
+        }
+    }, 3000)
+}) 
+promesa1.then(res => {
+    console.log("Se completó la tarea:", res[0].descripcion, "Hay", parseInt(res[0].valor) + parseInt(res[1].valor), "objetos creados");
+    return new Promise((resolve, reject) =>{
+        setTimeout(()=> {
+            let nuevaTarea = {
+                status: 201,
+                descripcion: "Objeto creado",
+            }
+
+            if(nuevaTarea.status == 200) {
+                resolve(nuevaTarea);
+            } else {
+                reject("Fallo al crear la nueva tarea");
+            }
+        }, 5000)
+    }).then(res => {
+        console.log('Segunda tarea creada:', res.status);
+    }).catch(err => {
+        console.log(err);
+    })
+
+}).catch(err => {
+    console.error(err);
+})
+*/
+
+let promesa1 = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        let tarea = {
+            status: 201,
+            descripcion: "Objeto creado.",
+            valor: 1,
+        };
+        let tarea2 = {
+            status: 201,
+            descripcion: 'Objeto creado.',
+            valor: 1,
+        }
+        if(tarea.status == 201 && tarea2.status == 201) {
+            resolve([tarea, tarea2]);
+        } else{
+            reject(['Fallo al crear el objeto:', tarea, tarea2]);
+        }
+    }, 3000)
+}) 
+
+async function respuestaPromesas() {
+    let respuestaPromesa1 = await promesa1
+    console.log(respuestaPromesa1[0].status);
+}
+
+respuestaPromesas();
