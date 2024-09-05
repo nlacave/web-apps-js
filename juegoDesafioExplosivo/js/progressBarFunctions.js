@@ -47,7 +47,7 @@ export const updateProgressBar = (percent) => {
         updateProgressBar(percent);
         percent--;
         percentContador--;
-        if (percentContador < 0 && !juegoGanado || contadorIntentos == 0 && !juegoGanado) {
+        if (percentContador < 0 && !juegoGanado || contadorIntentos === 0 && !juegoGanado) {
             cambiarMusica(juegoGanado, true);
             clearInterval(intervalId);
             pantallaGameOver();
