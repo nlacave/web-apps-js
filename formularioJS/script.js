@@ -4,9 +4,25 @@ let inputPassword = document.getElementById('password');
 let nombreError = document.getElementById('nameError');
 let emailError = document.getElementById('emailError');
 let passwordError = document.getElementById('passwordError');
-let buttonSubmit = document.querySelector('button');
 let formulario = document.getElementById('formulario');
 let nombreValido, passwordValido, emailValido;
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDn8zctcX46Vr9PzI4J_Q75ALDyogmV1W8",
+    authDomain: "formulario-de-registro-ed5fd.firebaseapp.com",
+    projectId: "formulario-de-registro-ed5fd",
+    storageBucket: "formulario-de-registro-ed5fd.appspot.com",
+    messagingSenderId: "631494614",
+    appId: "1:631494614:web:618b480a412b0eba1fb677",
+    measurementId: "G-5Q213YJJX6"
+  };
+
+  // Inicializa Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Obtén la referencia a Firestore
+const db = firebase.firestore();
 
 
 formulario.addEventListener(('submit'), (event) => {
@@ -44,17 +60,18 @@ formulario.addEventListener(('submit'), (event) => {
     }
 
     if(nombreValido && emailValido && passwordValido) {
-        alert('Formulario enviado exitosamente!');
         db.collection("users").add({
             nombre: inputNombre.value,
             email: inputEmail.value,
             password: inputPassword.value
         })
         .then((docRef) => {
-            console.log("Document written with ID: ", docRef.id);
+            alert('Formulario enviado exitosamente!');
         })
         .catch((error) => {
-            console.error("Error adding document: ", error);
+           alert("Ocurrió un error:", error);
         });
+       
+        formulario.reset();
     }
 })
