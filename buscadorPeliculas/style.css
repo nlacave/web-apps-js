@@ -100,11 +100,13 @@ body {
     margin-top: 0;
     margin-bottom: 0;
     font-weight: bold;
+    color: black;
   }
   
   .movie p {
     margin: 5px 0;
     text-align: left;
+    color: black;
   }
 
   button {
