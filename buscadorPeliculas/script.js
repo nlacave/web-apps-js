@@ -8,9 +8,11 @@ let api_key = '4a9f0a9ab4c5cdffb2337589aee46925';
 
 const searchMovies = () => {
     results.textContent = '';
+    results.style.display = 'block';
 
     if (searchInput.value.trim() === '') {
         results.innerHTML = `<h3>Por favor, ingrese un término de búsqueda</h3>`;
+        results.style.color = 'white';
         results.querySelector('h3').style.textAlign = 'center';
         results.querySelector('h3').style.fontWeight = 'bold';
         return;
@@ -18,6 +20,7 @@ const searchMovies = () => {
 
     let stateSearch = document.createElement('h3');
     stateSearch.textContent = 'Cargando...';
+    stateSearch.style.color = 'white';
     stateSearch.style.textAlign = 'center';
     results.appendChild(stateSearch);
     fetch(`${url_base}?query=${searchInput.value}&api_key=${api_key}`)
@@ -34,7 +37,7 @@ const searchMovies = () => {
                     let movieDiv = document.createElement('div');
                     movieImg.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
                     movieTitle.textContent = movie.title;
-                    releaseDate.textContent = movie.release_date;
+                    releaseDate.textContent = `Release: ${movie.release_date}`;
                     overview.textContent = movie.overview;
                     movieDiv.appendChild(movieImg);
                     movieDiv.appendChild(movieTitle);
@@ -48,10 +51,8 @@ const searchMovies = () => {
             }
         })
         .catch(error => {
-            results.removeChild(stateSearch);
-            results.innerHTML = `<h3>Ocurrió un error: ${error.message}</h3>`;
-            results.querySelector('h3').style.textAlign = 'center';
-            results.querySelector('h3').style.fontWeight = 'bold';
+            stateSearch.textContent = `Ocurrió un error: ${error.message}`;
+            stateSearch.style.color = 'white';
             console.error(error);
 })
 }

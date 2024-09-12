@@ -1,31 +1,81 @@
+@font-face {
+  font-family: 'Wonderbar Demo'; /* Nombre de la fuente, sin la extensión */
+  src: url('./wonderbar/Wonderbar\ Demo.otf') format('opentype'); /* Ruta del archivo y formato */
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-image: url(img/cine.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .container {
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en una columna */
+    align-items: center;
     max-width: 500px;
     margin: 0 auto;
     text-align: center;
   }
   
   h1 {
-    color: #333;
+    color: orange;
+    font-size: 2em;
+    font-family: 'Wonderbar Demo';
+    background-color: black;
+    text-align: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    width: 100%;
+    border: 5px dotted orange;
+    border-left: 0;
+    border-right: 0;
+    box-sizing: border-box;
+    height: 100px;
   }
   
   input[type="text"] {
-    width: 300px;
+    width: 210px;
     padding: 10px;
     font-size: 16px;
+    margin: 10px;
+    text-align: left;
+    display: block;
+    margin-top: 120px;
+    border: 2px solid rgb(66, 62, 62);
+    border-radius: 10px;
   }
   
   button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+    margin: 10px;
   }
   
   #results {
-    margin-top: 20px;
+    display: none;
+    margin: 20px;
     text-align: left;
+    color: black;
+    background-color: black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 5px dotted orange;
   }
   
   .movie {
@@ -33,21 +83,45 @@
     padding: 10px;
     background-color: #f5f5f5;
     border-radius: 5px;
-    min-height: 200px;
+    min-height: 220px;
+    width: 600px;
+    display: block;
   }
   
   .movie img {
     width: 150px;
     float: left;
     margin-right: 10px;
+    border-radius: 5px;
   }
   
-  .movie h2 {
+  .movie h4 {
     font-size: 18px;
     margin-top: 0;
+    margin-bottom: 0;
+    font-weight: bold;
   }
   
   .movie p {
     margin: 5px 0;
     text-align: left;
+  }
+
+  button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Transición suave */
+  }
+
+  button:hover {
+    background-color: orange; /* Cambio de color en hover */
+    transform: scale(1.1); /* Agranda el botón en hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra en hover */
   }
