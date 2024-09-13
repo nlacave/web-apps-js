@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'AirwaysPersonalUseOnly-5Rr8'; /* Nombre de la fuente, sin la extensión */
+  src: url('./airways-font/AirwaysPersonalUseOnly-5Rr8.ttf') format('opentype'); /* Ruta del archivo y formato */
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -94,8 +99,8 @@ body {
 
 
   h1 {
-    color: #0d0d0d;
-    font-family:monospace;
+    color: rgb(57, 59, 59);
+    font-family: 'AirwaysPersonalUseOnly-5Rr8';
     font-weight: bold;
     font-size: 40px;
     margin: 20px;
