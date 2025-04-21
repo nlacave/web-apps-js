@@ -1,4 +1,4 @@
-Proyetos de desarrollo web Front-End.
+Proyectos de desarrollo web Front-End.
 
 Se incluyen:
 
