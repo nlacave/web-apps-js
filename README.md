@@ -1,6 +1,7 @@
 Proyetos de desarrollo web Front-End.
 
 Se incluyen:
+
 Videojuego - Adivina el Número.
 
 MySimplyCalculator - Calculadora Web
