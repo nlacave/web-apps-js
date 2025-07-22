@@ -11,7 +11,3 @@ Videojuego - Desafio Explosivo!
 TheWeatherNow - App de Climas
 
 Movie Search - App de búsqueda de películas.
-
-FormularioJS - Validación de Formulario + registro de datos en Firebase
-
-Web de Viajes
